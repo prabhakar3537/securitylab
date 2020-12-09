@@ -1,0 +1,49 @@
+userinfo = {
+    "a": 0,
+    "b": 1,
+    "c": 2,
+    "d": 3
+}
+fileinfo = {
+    "sample.txt": 0,
+    "samp1.txt": 1,
+    "samp2.txt": 2,
+    "samp3.txt": 3
+}
+brb = int(input("1. BLP 2. BIBA"))
+login = input("Enter login ID: ")
+doc = input("Enter file you want to access: ")
+rw = input("1. Read access \n2. Write access")
+
+if brb==1:
+	if rw==1:
+		if userinfo[login]<=fileinfo[doc]:
+			f = open(doc, "r")
+			print(f.read())
+		else:
+			print("Cannot read - insufficient access rights")
+	elif rw==2:
+		if userinfo[login]>=fileinfo[doc]:
+			content=input("Write: ")
+			f = open(doc, "a")
+			f.write(content)
+			print("Appended ",doc)
+			f.close()
+		else:
+			print("Cannot write - insufficient access rights")
+elif brb==2:
+	if rw==1:
+		if userinfo[login]>=fileinfo[doc]:
+			f = open(doc, "r")
+			print(f.read())
+		else:
+			print("Cannot read - insufficient access rights")
+	elif rw==2:
+		if userinfo[login]<=fileinfo[doc]:
+			content=input("Write: ")
+			f = open(doc, "a")
+			f.write(content)
+			print("Appended ",doc)
+			f.close()
+		else:
+			print("Cannot write - insufficient access rights")
