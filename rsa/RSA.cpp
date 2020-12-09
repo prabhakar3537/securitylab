@@ -30,9 +30,6 @@ int main() {
       else
          e++;
    }
-   //private key
-   //d stands for decrypt
-   //choosing d such that it satisfies d*e = 1 mod phi
    double d1=1/e;
    double d=fmod(d1,phi);
    double message = 9;
